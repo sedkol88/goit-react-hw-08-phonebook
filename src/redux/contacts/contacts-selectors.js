@@ -18,12 +18,12 @@ export const selectFilteredContacts = store => {
 
   const normalizedFilter = filter.toLowerCase();
 
-  const filteredContacts = items.filter(({ name, phone }) => {
+  const filteredContacts = items.filter(({ name, number }) => {
     const normalizedName = name.toLowerCase();
-    const normalizedPhone = phone.toLowerCase();
+    const normalizedNumber = number.toLowerCase();
 
     return (
-      normalizedPhone.includes(normalizedFilter) ||
+      normalizedNumber.includes(normalizedFilter) ||
       normalizedName.includes(normalizedFilter)
     );
   });

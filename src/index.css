@@ -13,3 +13,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h1 {
+  font-size: 50px;
+  margin: 100px 0px 30px 0px;
+}
+
+h2 {
+  font-size: 42px;
+  color: rgb(94, 94, 94);
+  margin: 0px;
+}
+
+input {
+  width: 200px;
+  height: 30px;
+  font-size: 26px;
+}
+
+button {
+  width: 150px;
+  height: 40px;
+  font-size: 20px;
+}
+
+div {
+  /* outline: 2px solid tomato; */
+}
+
+ul {
+  padding: 0px;
+  margin: 20px 0px;
+}
+
+li {
+  list-style: none;
+  /* outline: 1px solid blue; */
+}

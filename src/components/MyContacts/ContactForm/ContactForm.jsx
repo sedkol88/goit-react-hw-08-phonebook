@@ -8,7 +8,7 @@ const ContactForm = ({ onSubmit }) => {
 
   const [state, setState] = useState({
     name: '',
-    phone: '',
+    number: '',
   });
 
   const handleSubmit = e => {
@@ -16,7 +16,7 @@ const ContactForm = ({ onSubmit }) => {
     onSubmit({ ...state });
     setState({
       name: '',
-      phone: '',
+      number: '',
     });
   };
 
@@ -28,10 +28,10 @@ const ContactForm = ({ onSubmit }) => {
     });
   };
 
-  const { name, phone } = state;
+  const { name, number } = state;
 
   return (
-    <form onSubmit={handleSubmit} className={styles.formPlace}>
+    <form onSubmit={handleSubmit} className={styles.block}>
       <div>
         <label htmlFor={contactId}>Name</label>
         <input
@@ -45,14 +45,14 @@ const ContactForm = ({ onSubmit }) => {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-        <label htmlFor={telId}>Phone</label>
+        <label htmlFor={telId}>Number</label>
         <input
-          value={phone}
+          value={number}
           onChange={handleChange}
           id={telId}
           className={styles.inputTel}
           type="tel"
-          name="phone"
+          name="number"
           pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required

@@ -4,12 +4,12 @@ import * as contactsApi from '../../api/contacts-api';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
-  async (_, thunkAPI) => {
+  async (_, { rejectWithValue }) => {
     try {
       const data = await contactsApi.requestFetchContacts();
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -25,22 +25,24 @@ export const addContact = createAsyncThunk(
     }
   },
   {
-    condition: ({ name, phone }, { getState }) => {
+    condition: ({ name, number }, { getState }) => {
       const { contacts } = getState();
       const normalizedName = name.toLowerCase();
-      const normalizedPhone = phone.toLowerCase();
+      const normalizedNumber = number.toLowerCase();
 
       const dublicate = contacts.items.find(item => {
         const normalizedCurrentName = item.name.toLowerCase();
-        const normalizedCurrentPhone = item.phone.toLowerCase();
+        const normalizedCurrentNumber = item.number.toLowerCase();
+
         return (
+          // normalizedCurrentName === normalizedName
           normalizedCurrentName === normalizedName &&
-          normalizedCurrentPhone === normalizedPhone
+          normalizedCurrentNumber === normalizedNumber
         );
       });
 
       if (dublicate) {
-        alert(`Contact with ${name} and ${phone} already in list`);
+        alert(`Contact with ${name} and ${number} already in list`);
         return false;
       }
     },
