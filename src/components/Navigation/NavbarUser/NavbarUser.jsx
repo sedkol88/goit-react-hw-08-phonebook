@@ -7,7 +7,8 @@ import { selectUser } from '../../../redux/auth/auth-selectors';
 import styles from './navbar-user.module.css';
 
 const NavbarUser = () => {
-  const { email } = useSelector(selectUser);
+  const user = useSelector(selectUser);
+  const email = user ? user.email : '';
 
   const dispatch = useDispatch();
 
